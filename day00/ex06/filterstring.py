@@ -3,6 +3,7 @@ import sys
 
 
 def main():
+    """Main function to filter strings based on length from command line arguments."""
     try:
         if (len(sys.argv) != 3):
             return print("AssertionError: the arguments are bad")
