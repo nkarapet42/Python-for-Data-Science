@@ -1,10 +1,10 @@
-import os
-from tqdm import tqdm
+import os as s
+
 
 def ft_tqdm(lst: range) -> None:
     """A simple implementation of a progress bar similar to tqdm."""
     total = len(lst)
-    columns = os.get_terminal_size().columns
+    columns = s.get_terminal_size().columns
     bar_size = columns - 36 - (len(str(total)) * 2 + 2)
     for i, elem in enumerate(lst, start=1):
         percent = i / total

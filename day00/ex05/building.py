@@ -1,4 +1,4 @@
-import sys
+import sys as s
 
 
 def counter(user_input: str):
@@ -27,13 +27,13 @@ punctuation marks, digits, and spaces in the given text."""
 def main():
     """Main function to handle user input and call the counter function."""
     try:
-        if len(sys.argv) == 1:
+        if len(s.argv) == 1:
             user_input = input("What is the text to count?\n")
             counter(user_input)
-        elif len(sys.argv) != 2:
+        elif len(s.argv) != 2:
             raise AssertionError("more than one argument is provided")
         else:
-            counter(sys.argv[1])
+            counter(s.argv[1])
     except Exception as e:
         print(f"AssertionError: {e}")
 

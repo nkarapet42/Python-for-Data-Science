@@ -1,4 +1,4 @@
-from setuptools import setup, find_packages
+from setuptools import setup
 
 setup(
     name="ft_package",
@@ -8,7 +8,8 @@ setup(
     description="A sample test package",
     long_description=open("README.md").read(),
     long_description_content_type="text/markdown",
-    url="https://github.com/nkarapet42/Python-for-Data-Science/tree/main/day00/ex09",
+    url="https://github.com/nkarapet42/\
+Python-for-Data-Science/tree/main/day00/ex09",
     license="MIT",
     packages=["ft_package"],
     classifiers=[

@@ -1,4 +1,4 @@
-import sys
+import sys as s
 
 
 NESTED_MORSE = {
@@ -31,9 +31,9 @@ def sos(string) -> None:
 def main() -> None:
     """Main function to handle command line arguments and call sos function."""
     try:
-        if len(sys.argv) != 2:
+        if len(s.argv) != 2:
             return print("AssertionError: the arguments are bad")
-        sos(sys.argv[1])
+        sos(s.argv[1])
     except Exception:
         print("AssertionError: the arguments are bad")
 
