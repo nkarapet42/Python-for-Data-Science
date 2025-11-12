@@ -8,6 +8,9 @@ def ft_load(path: str) -> ndarray:
     """Loads an image from the specified file path\
 and returns it as a NumPy array."""
     try:
+        if not path.endswith(".jpg") and not path.endswith(".jpeg"):
+            raise ValueError("Unsupported file format. ",
+                             "Please provide a .jpg or .jpeg image.")
         with Image.open(path) as img:
             img = img.convert("RGB")
             image = np.array(img)

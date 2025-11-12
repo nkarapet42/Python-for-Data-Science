@@ -6,7 +6,7 @@ from matplotlib import pyplot as plt
 
 def save_image(image: ndarray,
                title: str = "Image", jpg_name: str = "output.jpg") -> None:
-    """Displays the image with axes."""
+    """Saves the image with axes."""
     plt.imshow(image, cmap="gray"
                if image.ndim == 2
                or image.shape[-1] == 1 else None)
