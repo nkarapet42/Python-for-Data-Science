@@ -22,7 +22,7 @@ def main() -> None:
     try:
         image = ft_load("/home/nkarapet/Downloads/animal.jpeg")
         print(image)
-        zoomed_image = ft_zoom(image, 2)
+        zoomed_image = ft_zoom(image, size=500, channel="rgb")
         print(zoomed_image)
         save_image(zoomed_image, "Zoomed Image", "zoomed_output.jpg")
     except Exception as e:
