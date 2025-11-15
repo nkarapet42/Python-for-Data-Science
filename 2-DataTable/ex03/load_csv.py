@@ -27,8 +27,15 @@ def main() -> None:
     """Main function to demonstrate loading a CSV file."""
     try:
         dataset = load("/home/nkarapet/Downloads/life_expectancy_years.csv")
-        if dataset is not None:
+        incomedata = load("/home/nkarapet/Downloads/\
+income_per_person_gdppercapita_ppp_inflation_adjusted.csv")
+        if dataset is not None and incomedata is not None:
             print(dataset.data)
+            print(incomedata.data)
+            from projection_life import projection_life
+            projection_life(dataset, incomedata)
+        else:
+            print("Failed to load dataset.")
     except Exception as e:
         print(e)
 

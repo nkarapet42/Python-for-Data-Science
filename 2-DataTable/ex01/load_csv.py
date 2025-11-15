@@ -1,5 +1,6 @@
 import pandas as pd
 
+
 class Dataset:
     """A simple Dataset class to hold data."""
     def __init__(self, data: pd.DataFrame):
