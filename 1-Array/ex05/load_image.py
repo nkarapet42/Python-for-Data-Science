@@ -1,6 +1,7 @@
 import numpy as np
 from numpy import ndarray
 from PIL import Image
+from pimp_image import ft_invert, ft_red, ft_green, ft_blue, ft_grey
 
 
 def save_image(image: ndarray, jpg_name: str = "output.jpg") -> None:
@@ -23,3 +24,21 @@ and returns it as a NumPy array."""
         return image
     except Exception as e:
         raise Exception(f"An error occurred while loading the image: {e}")
+
+
+def main() -> None:
+    """Main function to demonstrate loading an image."""
+    try:
+        image = ft_load("landscape.jpg")
+        save_image(ft_invert(image), jpg_name="inverted_image.jpg")
+        save_image(ft_red(image), jpg_name="red_image.jpg")
+        save_image(ft_green(image), jpg_name="green_image.jpg")
+        save_image(ft_blue(image), jpg_name="blue_image.jpg")
+        save_image(ft_grey(image), jpg_name="grey_image.jpg")
+    except Exception as e:
+        print(e)
+
+
+if __name__ == "__main__":
+    """Entry point of the script."""
+    main()

@@ -21,3 +21,20 @@ def slice_me(family: list, start: int, end: int) -> list:
     shaped_array = np.array(family)[start:end]
     print("My new shape is:", shaped_array.shape)
     return shaped_array.tolist()
+
+
+def main() -> None:
+    """Main function to demonstrate slicing a 2D list."""
+    family = [[1.80, 78.4], [2.15, 102.7], [2.10, 98.5], [1.88, 75.2]]
+
+    try:
+        validate_input(family)
+        print(slice_me(family, 0, 2))
+        print(slice_me(family, 1, -2))
+    except Exception as e:
+        print("An error occurred:", e)
+
+
+if __name__ == "__main__":
+    """Entry point of the script."""
+    main()
