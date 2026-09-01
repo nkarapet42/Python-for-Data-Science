@@ -4,5 +4,6 @@ A sample test package.
 
 ## Usage
 ```python
-from ft_package import add
-print(add(4,5))
+from ft_package import count_in_list
+count_in_list(["toto", "tata", "toto"], "toto")
+```

@@ -1,4 +1,6 @@
-def NULL_not_found(object: any) -> int:
+from typing import Any
+
+def NULL_not_found(object: Any) -> int:
     if object is None:
         print(f"Nothing: {object} {object.__class__}")
     elif object != object:

@@ -34,9 +34,14 @@ def main():
             raise AssertionError("more than one argument is provided")
         else:
             counter(s.argv[1])
+    except EOFError:
+        print("\nEOFError: No input provided.")
+    except KeyboardInterrupt:
+        print("\nKeyboardInterrupt: Operation cancelled by user.")
     except Exception as e:
         print(f"AssertionError: {e}")
 
 
 if __name__ == "__main__":
+    """Main entry point of the script."""
     main()

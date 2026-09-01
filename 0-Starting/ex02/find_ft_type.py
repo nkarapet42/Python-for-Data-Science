@@ -1,4 +1,6 @@
-def all_thing_is_obj(object: any) -> int:
+from typing import Any
+
+def all_thing_is_obj(object: Any) -> int:
     object_type = type(object)
     if object_type in [list, tuple, set, dict]:
         print(f"{type(object).__name__.capitalize()} : {object.__class__}")
