@@ -4,10 +4,9 @@ from S1E7 import Baratheon, Lannister
 class King(Baratheon, Lannister):
     """Class representing a King, inheriting from Baratheon and Lannister."""
 
-    def __init__(self, first_name: str) -> None:
+    def __init__(self, first_name: str, is_alive: bool = True) -> None:
         """Initialize the King with a first name."""
-        Lannister.__init__(self, first_name)
-        Baratheon.__init__(self, first_name)
+        super().__init__(first_name, is_alive)
 
     def set_eyes(self, eye_color: str) -> None:
         """Set the eye color of the King."""
@@ -38,4 +37,5 @@ def main() -> None:
 
 
 if __name__ == "__main__":
+    """Main entry point of the script."""
     main()

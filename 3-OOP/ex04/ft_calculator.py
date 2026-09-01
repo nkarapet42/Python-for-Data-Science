@@ -23,12 +23,13 @@ def main() -> None:
     """
         Main function to demonstrate the calculator class functionality.
     """
-    a = [5, 10, 2]
-    b = [2, 4, 3]
+    a = [5.0, 10.0, 2.0]
+    b = [2.0, 4.0, 3.0]
     calculator.dotproduct(a, b)
     calculator.add_vec(a, b)
     calculator.sous_vec(a, b)
 
 
 if __name__ == "__main__":
+    """Main entry point of the script."""
     main()

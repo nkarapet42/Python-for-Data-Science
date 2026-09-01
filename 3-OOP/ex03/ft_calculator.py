@@ -6,27 +6,27 @@ class calculator:
     def __init__(self, values: list[float]) -> None:
         self.values = values
 
-    def __add__(self, object) -> None:
+    def __add__(self, scalar: int | float) -> None:
         for i in range(len(self.values)):
-            self.values[i] += object
+            self.values[i] += scalar
         print(self.values)
 
-    def __mul__(self, object) -> None:
+    def __mul__(self, scalar: int | float) -> None:
         for i in range(len(self.values)):
-            self.values[i] *= object
+            self.values[i] *= scalar
         print(self.values)
 
-    def __sub__(self, object) -> None:
+    def __sub__(self, scalar: int | float) -> None:
         for i in range(len(self.values)):
-            self.values[i] -= object
+            self.values[i] -= scalar
         print(self.values)
 
-    def __truediv__(self, object) -> None:
-        if object == 0:
+    def __truediv__(self, scalar: int | float) -> None:
+        if scalar == 0:
             print("Error: Division by zero is not allowed.")
             return
         for i in range(len(self.values)):
-            self.values[i] /= object
+            self.values[i] /= scalar
         print(self.values)
 
 
@@ -47,4 +47,5 @@ def main() -> None:
 
 
 if __name__ == "__main__":
+    """Main entry point of the script."""
     main()
