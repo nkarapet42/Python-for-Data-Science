@@ -1,22 +1,21 @@
 import matplotlib.pyplot as plt
-from load_csv import Dataset
+import pandas as pd
+from load_csv import load
 
 
-def projection_life(life_data: Dataset, gdp: Dataset) -> None:
+def projection_life(life_data: pd.DataFrame, gdp: pd.DataFrame) -> None:
     """
     Displays the life expectancy projection og 1900 year
     based on GDP data.
     """
     try:
-        if life_data is None or life_data.data.empty:
+        if life_data is None or life_data.empty:
             raise ValueError("The provided life expectancy"
                              " dataset is empty or None.")
-        if gdp is None or gdp.data.empty:
+        if gdp is None or gdp.empty:
             raise ValueError("The provided GDP dataset is empty or None.")
-        print(life_data.data['1900'])
-        life_data_1900 = life_data.data['1900']
-        print(gdp.data['1900'])
-        gdp_1900 = gdp.data['1900']
+        life_data_1900 = life_data['1900']
+        gdp_1900 = gdp['1900']
         plt.figure(figsize=(10, 5))
         plt.scatter(gdp_1900, life_data_1900, color='blue')
         plt.title("1900")
@@ -28,3 +27,23 @@ def projection_life(life_data: Dataset, gdp: Dataset) -> None:
         plt.savefig("projection_life_1900.png")
     except Exception as e:
         raise Exception(f"An error occurred while plotting the data: {e}")
+
+
+def main() -> None:
+    """Main function to demonstrate loading a CSV file."""
+    try:
+        dataset = load("life_expectancy_years.csv")
+        incomedata = load(
+            "income_per_person_gdppercapita_ppp_inflation_adjusted.csv"
+            )
+        if dataset is not None and incomedata is not None:
+            projection_life(dataset, incomedata)
+        else:
+            print("Failed to load dataset.")
+    except Exception as e:
+        print(e)
+
+
+if __name__ == "__main__":
+    """Main entry point of the script."""
+    main()

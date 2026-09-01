@@ -1,39 +1,18 @@
 import pandas as pd
 
 
-class Dataset:
-    """A simple Dataset class to hold data."""
-    def __init__(self, data: pd.DataFrame):
-        self.data = data
-
-
-def load(path: str) -> Dataset | None:
+def load(path: str) -> pd.DataFrame | None:
     """Loads a CSV file from the specified file path
     and returns it as a Dataset object."""
     try:
         if path is None or path == "":
-            return None
+            raise ValueError("Invalid file path.")
         if not path.endswith(".csv"):
             raise ValueError("Unsupported file format. ",
                              "Please provide a .csv file.")
         data = pd.read_csv(path, index_col=0)
         print("Loading dataset of dimensions", data.shape)
-        return Dataset(data)
+        return data
     except Exception as e:
-        raise Exception(f"An error occurred while loading the CSV file: {e}")
-
-
-def main() -> None:
-    """Main function to demonstrate loading a CSV file."""
-    try:
-        from aff_pop import aff_pop
-        dataset = load("/home/nkarapet/Downloads/population_total.csv")
-        if dataset is not None:
-            print(dataset.data)
-            aff_pop(dataset, ["France", "Belgium"])
-    except Exception as e:
-        print(e)
-
-
-if __name__ == "__main__":
-    main()
+        print("Error loading dataset:", e)
+        return None
