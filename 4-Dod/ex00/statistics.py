@@ -1,3 +1,6 @@
+from typing import Any
+
+
 def mean(data: list[float]) -> float:
     """
     Calculate the mean of a list of float values.
@@ -59,7 +62,7 @@ def variance(data: list[float]) -> float:
     return variance
 
 
-def ft_statistics(*args: any, **kwargs: any) -> None:
+def ft_statistics(*args: Any, **kwargs: Any) -> None:
     """
     Calculate and print statistical measures based on provided arguments.
 
@@ -78,7 +81,6 @@ def ft_statistics(*args: any, **kwargs: any) -> None:
             case "median":
                 if data:
                     print(f"median: {median(data)}")
-
             case "quartile":
                 if data:
                     q1, q3 = quartiles(data)
@@ -109,4 +111,5 @@ def main() -> None:
 
 
 if __name__ == "__main__":
+    """Main entry point of the script."""
     main()
