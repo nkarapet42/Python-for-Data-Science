@@ -2,6 +2,7 @@ from PIL import Image
 import numpy as np
 from numpy import ndarray
 from matplotlib import pyplot as plt
+from load_image import ft_load
 
 
 def save_image(image: ndarray,
@@ -37,6 +38,15 @@ def ft_zoom(image: ndarray, zoom_factor: float = float("NaN"),
         start_x = (w - new_w) // 2
 
         zoomed = image[start_y:start_y + new_h, start_x:start_x + new_w]
+
+        if channel == "gray":
+            zoomed = np.array(Image.fromarray(zoomed).convert("L"))
+            zoomed = np.expand_dims(zoomed, axis=-1)
+        elif channel != "rgb":
+            raise ValueError(
+                "Invalid channel. "
+                "Choose from: gray or rgb."
+            )
         print(f"New shape after slicing: {zoomed.shape} or ({new_h}, {new_w})")
         return zoomed
     else:
@@ -51,12 +61,32 @@ def ft_zoom(image: ndarray, zoom_factor: float = float("NaN"),
 
         if channel == "gray":
             img_cropped = img_cropped.convert("L")
+
         elif channel != "rgb":
             raise ValueError(
                 "Invalid channel. "
                 "Choose from: gray or rgb."
             )
         zoomed = np.array(img_cropped)
+        if channel == "gray":
+            zoomed = np.expand_dims(zoomed, axis=-1)
         print(f"New shape after slicing: {zoomed.shape}",
               f"or ({zoomed.shape[0]}, {zoomed.shape[1]})")
         return zoomed
+
+
+def main() -> None:
+    """Main function to demonstrate loading an image."""
+    try:
+        image = ft_load("animal.jpeg")
+        print(image)
+        zoomed_image = ft_zoom(image, size=400,  channel="gray")
+        print(zoomed_image)
+        save_image(zoomed_image, "Zoomed Image", "zoomed_output.jpg")
+    except Exception as e:
+        print(e)
+
+
+if __name__ == "__main__":
+    """Main entry point of the script."""
+    main()

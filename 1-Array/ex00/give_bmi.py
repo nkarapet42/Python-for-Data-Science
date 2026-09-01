@@ -30,23 +30,3 @@ def apply_limit(bmi: list[int | float], limit: int) -> list[bool]:
     bmi_array = np.array(bmi)
     limit_array = bmi_array > limit
     return limit_array.tolist()
-
-
-def main() -> None:
-    """Main function to demonstrate BMI calculation and limit application."""
-    heights = [2.71, 1.15, 1.8, 1.75]
-    weights = [165.3, 38.4, 80.5, 70.2]
-
-    try:
-        validate_inputs(heights, weights)
-        bmi = give_bmi(heights, weights)
-        print("BMI values:", bmi)
-        limit = 23
-        above_limit = apply_limit(bmi, limit)
-        print(f"BMI values above {limit}:", above_limit)
-    except ValueError as e:
-        print("Error:", e)
-
-
-if __name__ == "__main__":
-    main()

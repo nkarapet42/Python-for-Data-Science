@@ -1,6 +1,33 @@
 import numpy as np
 from numpy import ndarray
 import matplotlib.pyplot as plt
+from load_image import ft_load
+from PIL import Image
+
+
+def ft_crop(image: ndarray, size: int = 400, channel: str = "gray") -> ndarray:
+    """Crops the given image to the specified size and channel."""
+    img = Image.fromarray(image).convert("RGB")
+    w, h = img.size
+
+    left = (w - size) // 2
+    top = (h - size) // 2
+    right = left + size
+    bottom = top + size
+    img_cropped = img.crop((left, top, right, bottom))
+    if channel == "gray":
+        img_cropped = img_cropped.convert("L")
+    elif channel != "rgb":
+        raise ValueError(
+            "Invalid channel. "
+            "Choose from: gray or rgb."
+        )
+    zoomed = np.array(img_cropped)
+    if channel == "gray":
+        zoomed = np.expand_dims(zoomed, axis=-1)
+    print(f"The shape of image is: {zoomed.shape}",
+          f"or ({zoomed.shape[0]}, {zoomed.shape[1]})")
+    return zoomed
 
 
 def save_image(image: ndarray,
@@ -43,3 +70,23 @@ def ft_rotate(image: ndarray, angle: float) -> ndarray:
             if 0 <= x_rotated < w and 0 <= y_rotated < h:
                 rotated_image[y, x] = image[y_rotated, x_rotated]
     return rotated_image
+
+
+def main() -> None:
+    """Main function to demonstrate loading an image."""
+    try:
+        image = ft_load("/home/nkarapet/Downloads/animal.jpeg")
+        print(image)
+        cropped_image = ft_crop(image, size=400, channel="gray")
+        print(cropped_image)
+        rotated_image = ft_rotate(cropped_image, angle=270)
+        print(f"New shape after Transpose: {rotated_image.shape}")
+        print(rotated_image)
+        save_image(rotated_image, jpg_name="rotated_image.jpg")
+    except Exception as e:
+        print(e)
+
+
+if __name__ == "__main__":
+    """Main entry point of the script."""
+    main()

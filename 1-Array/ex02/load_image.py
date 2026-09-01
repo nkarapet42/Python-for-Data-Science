@@ -17,15 +17,3 @@ and returns it as a NumPy array."""
         return image
     except Exception as e:
         raise Exception(f"An error occurred while loading the image: {e}")
-
-
-def main() -> None:
-    """Main function to demonstrate loading an image."""
-    try:
-        print(ft_load("/home/nkarapet/Downloads/landscape.jpg"))
-    except Exception as e:
-        print(e)
-
-
-if __name__ == "__main__":
-    main()
